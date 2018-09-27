@@ -1,0 +1,113 @@
+数据输入输出流
+	DataInputStream
+	DataOutputStream
+	
+字节数组：
+	ByteArrayOutputStream
+	ByteArrayInputStream
+
+ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//写数据
+for(int x = 0; x < 10; x++){
+	baos.write(("hello" + x).getBytes());
+}
+//数据输入输出流不需要释放资源，无意义
+
+byte[] bys = baos.toByteArray();
+//读数据
+ByteArrayInputStream bais = new ByteArrayInputStream(bys);
+int by = 0;
+while((by = bais.read()) != -1);{
+	System.out.print((char)by);
+}
+ 
+/********************************************
+
+打印流：
+		字节流打印流：PrintStream
+		字符打印流：PrintWriter
+		可以操作任意类型
+		
+PrintWriter pw = new PrintWriter("pw.txt");
+pw.write("hello");
+pw.write("world");
+pw.close();
+
+/****************************
+
+BufferedReader br = new BufferedReader(new FileReader("a.txt"));
+PrintWriter pw = new PrintWriter(new FileWriter("b.txt"), true);
+
+String line = null;
+while((line = br.readLine()) != null){
+	pw.println(line);
+}
+
+
+BufferedWriter bw = new BufferedWriter(new FileWriter("b.txt"));
+char[] chs = new char[1024];
+int len = 0;
+while((len = br.read(chs)) != -1){
+	pw.write(chs, 0, len);
+}
+
+String line = null;
+while((line = br.readLine()) != null){
+	bw.write(line);
+	bw.newLine();
+	bw.flush();
+}
+
+/******************************************************
+
+三种方式实现键盘录入
+A:main方法的args接收参数
+B:Scanner
+	Scanner sc = new Scanner(System.in)
+	String s = sc.nextLine()
+	int x = sc.nextInt()
+C:通过字符缓冲流包装标准输入流实现
+
+BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+System.out.println("请输入一个字符串：");
+String line = br.readLine();
+int i = Integer.parseInt(br.readLine());
+
+/************************************************
+随机访问流：
+RandomAccessFile:即可读又可写
+/******************************
+
+合并流：
+SequeceInputStream(InputStream s1, InputStream s2)
+ 
+ /**************************************************************
+ 
+ 序列化流：
+	把对象按照流一样的方式存入文件或者网络间传输 ObjectOutputStream
+ 反序列化流
+	还原对象 ObjectInputStream
+
+/**********************************************
+
+Properties:属性集合类（Map集合）
+
+//把文件中的数据加载到集合中
+Properties prop = new Properties();
+Reader r = new FileReader("user.txt");
+prop.load(r);
+r.close();
+
+//遍历集合，获取得到每一个键
+Set<String> set = prop.stringPropertyNames();
+for(String key : set){
+	//判断是否有为"lisi"的，如果有就修改其值为"100"
+	if("lisi".equals(key)){
+		prop.setProperty(key, "100");
+		break;
+	}
+}
+//把集合中的数据重新存储到文件中
+Writer w = new FileWriter("user.txt");
+prop.store(w, null);
+w.close();

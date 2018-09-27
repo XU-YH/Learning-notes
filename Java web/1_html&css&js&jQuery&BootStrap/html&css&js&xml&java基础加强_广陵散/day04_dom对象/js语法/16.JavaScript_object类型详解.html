@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="application/javascript">
+        /*
+         创建方式一:
+         通过  new Object() 来创建一个对象,它本身什么属性和方法都没有,
+         需要你往它里边添加你的个性化的属性和方法
+
+         问题: 如果你需要多个相同类型的对象,则创建过程进于繁琐!
+         怎么解决呢? 见 创建方式二
+
+         创建方式二:
+         通过JS  对象的原型  来创建对象--->它在本质上就是  修改类的原型设计
+
+         在JS中创建对象时,系统会默默的为你申请一块空间,
+         该空间就是默认属性prototype指向的一块内存
+
+         在创建的对象时，通过默认属性prototype的方式就会为实例化对象创建默认的属性和方法
+
+         问题:如果类的公共属性和方法过多 ,会造成prototype出现混乱-->类爆炸
+         怎么解决呢? 见 创建方式三
+
+         创建方式三:
+         通过构造函数来创建(最常用的方法)
+         注意: 在JS中通过函数名的首字母来区分是 普通函数(小写) 和 构造函数(大写)
+
+         */
+
+        var p=new Object();
+        p.name="张三";
+        p.age=20;
+        p.eat=function(something){
+            alert("我喜欢吃"+something);
+        };
+
+        //alert("我的名字是："+ p.name);
+        //alert("我的年龄是："+ p.age);
+        //p.eat("冰激凌");
+
+        //在JS中，修改内置类Object的原型设计
+        Object.prototype.name="机器猫";
+        Object.prototype.tools=function(){
+            alert("给你一个任意门！");
+        };
+
+        p1=new Object();
+        p1.age=200;
+        //alert("p1的名字："+p1.name);//默认属性
+        //alert("p1的年龄："+p1.age);//声明的个性化属性
+        //p1.tools();//默认方法
+
+        p2=new Object();
+        p2.name="大雄";//声明的个性化属性
+        p2.age=10;//声明的个性化属性
+        //alert("p2的名字："+p2.name);//声明的个性化属性
+        //alert("p2的年龄："+p2.age);//声明的个性化属性
+        //p2.tools();//默认方法
+
+        //带this是类中的属性,不带this是构造函数的参数
+        function Person(name,age){
+             this.name=name;
+             this.age=age;
+
+             this.eat=function(something){
+                 alert("我喜欢吃"+something);
+             };
+        };
+
+        var p3=new Person("李四",21);
+        alert("p3的名字："+p3.name);//声明的个性化属性
+        alert("p3的年龄："+p3.age);//声明的个性化属性
+        p3.eat("麻辣烫");//声明的个性化方法
+
+        Person.prototype.car="法拉利";
+        Person.prototype.play=function(){
+            alert("做一名合格的网红！");
+        };
+
+        var p4=new Person("王五",22);
+        alert("p4的名字："+p4.name);//声明的个性化属性
+        alert("p4的年龄："+p4.age);//声明的个性化属性
+        p4.eat("满汉全席");//声明的个性化方法
+
+        alert("我有"+p4.car);//默认属性
+        p4.play();//默认方法
+
+    </script>
+
+
+</head>
+<body>
+
+</body>
+</html>

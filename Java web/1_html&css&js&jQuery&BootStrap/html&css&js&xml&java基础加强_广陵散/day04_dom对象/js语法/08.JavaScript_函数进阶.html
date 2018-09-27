@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="application/javascript">
+        /*
+         1.函数返回值的问题?
+         JavaScript规定每个函数必须有返回值
+         如果没有明确返回任何值，则函数返回值为undefined
+         例如下面的函数test1和函数test2就是返回undefined
+
+         2.调用JS自定义函数时,参数传递时可多可少
+         实参比形参多时,多传的参数没被使用将被忽略
+         实参比形参少时,少传的参数 ,形参变量没有被初始化，将显示 未定义 undefined
+
+         3.调用JS自定义函数时,除了可以在 <script>脚本中调用，
+         也可以在 事件 中调用 onclick
+
+         */
+
+        function test1()
+        {
+            alert("我是一个  无参无返回值  的函数");
+        }
+
+        //alert(test1());//undefined
+
+        function test2(x,y)
+        {
+            alert(x);
+            alert(y);
+            alert(x+y);
+        }
+
+        //test2(100,200);//100,200,300
+        //alert(test2(100,200));//此时，函数体内部没有return子句，函数的返回值为undefined
+
+        //test2(100,200,300,400);////100,200,300,多传的参数没被使用将被忽略
+        //alert(test2(100,200,300,400));//此时，函数体内部没有return子句，函数的返回值为undefined
+
+        //test2(100);//100,undefined,NaN
+        //alert(test2(100));//此时，函数体内部没有return子句，函数的返回值为undefined
+
+        function test3(x,y)
+        {
+            return x+y;
+        }
+
+    </script>
+</head>
+<body>
+     <script type="application/javascript">
+         alert(test3(100,200));//JS使用方式二：内部式
+     </script>
+
+     <!--//JS使用方式一：行内式-->
+     <input type="button" value="go" onclick="alert(test3(100,200));">
+</body>
+</html>

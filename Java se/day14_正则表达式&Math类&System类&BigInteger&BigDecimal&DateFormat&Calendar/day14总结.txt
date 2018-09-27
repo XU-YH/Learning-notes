@@ -1,0 +1,179 @@
+1:正则表达式(理解)
+	(1)就是符合一定规则的字符串
+	(2)常见规则
+		A:字符
+			x 字符 x。举例：'a'表示字符a
+			\\ 反斜线字符。
+			\n 新行（换行）符 ('\u000A') 
+			\r 回车符 ('\u000D')
+			
+		B:字符类
+			[abc] a、b 或 c（简单类）//[28]---2或者8 
+			[^abc] 任何字符，除了 a、b 或 c（否定） 
+			[a-zA-Z] a到 z 或 A到 Z，两头的字母包括在内（范围） 
+			[0-9] 0到9的字符都包括
+			
+		C:预定义字符类
+			. 任何字符。我的就是.字符本身，怎么表示呢? \.
+			\d 数字：[0-9]
+			\w 单词字符：[a-zA-Z_0-9]
+				在正则表达式里面组成单词的东西必须有这些东西组成
+
+		D:边界匹配器
+			^ 行的开头 
+			$ 行的结尾 
+			\b 单词边界
+				就是不是单词字符的地方。
+				举例：hello world?haha;xixi
+			
+		E:Greedy 数量词
+			X? X，一次或一次也没有
+			X* X，零次或多次
+			X+ X，一次或多次
+			X{n} X，恰好 n 次 
+			X{n,} X，至少 n 次 
+			X{n,m} X，至少 n 次，但是不超过 m 次 
+	(3)常见功能：(分别用的是谁呢?)
+		// regex--规则
+		A:判断功能
+			String类的public boolean matches(String regex)
+		B:分割功能
+			String类的public String[] split(String regex)
+		C:替换功能
+			String类的public String replaceAll(String regex,String replacement):将符合regex规则的字符串替换成replacement
+		D:获取功能
+			Pattern和Matcher
+				// 模式和匹配器的典型调用顺序
+
+				String regex = "\\b\\w{3}\\b";
+				// 把正则表达式编译成模式对象
+				Pattern p = Pattern.compile(regex);
+				// 通过模式对象得到匹配器对象，这个时候需要的是被匹配的字符串
+				Matcher m = p.matcher("da jia ting wo shuo, jin tian");
+				// 调用匹配器对象的功能
+				
+				m.find():查找存不存在
+				m.group():获取刚才查找过的数据
+	(4)案例
+		A:判断电话号码和邮箱
+		B:按照不同的规则分割数据
+		C:把论坛中的数字替换为*
+		D:获取字符串中由3个字符组成的单词
+	
+2:Math(掌握)
+	(1)针对数学运算进行操作的类
+	(2)常见方法(自己补齐)
+		public static int abs(int a)：				绝对值
+		public static double ceil(double a):		向上取整
+		public static double floor(double a):		向下取整
+		public static int max(int a,int b):			最大值 (min自学)
+		public static double pow(double a,double b):a的b次幂
+		public static double random():				随机数 [0.0,1.0)
+		public static int round(float a)：			四舍五入(参数为double的自学)
+		public static double sqrt(double a):		正平方根
+	(3)案例：
+		A:猜数字小游戏
+		B:获取任意范围的随机数
+	
+3:Random(理解)
+	成员变量：
+		public static final double PI
+		public static final double E
+	(1)用于产生随机数的类
+	(2)构造方法:
+		A:Random() 默认种子，每次产生的随机数不同
+		B:Random(long seed) 指定种子，每次种子相同，随机数就相同
+	(3)成员方法:
+		A:int nextInt() 返回int范围内的随机数
+		B:int nextInt(int n) 返回[0,n)范围内的随机数
+
+4:System(掌握)
+	(1)系统类,提供了一些有用的字段和方法
+	(2)成员方法(自己补齐)
+		public static void gc():				运行垃圾回收器(调用的还是finalise()方法)
+		public static void exit(int status):	终止当前正在运行的 Java 虚拟机。参数用作状态码；根据惯例，非 0 的状态码表示异常终止。 
+		public static long currentTimeMillis():	获取当前时间的毫秒值
+		public static void arraycopy(Object src,int srcPos,Object dest,int destPos,int length):从指定源数组中复制一个数组，复制从指定的位置开始，复制长度。
+
+5:BigInteger(理解)
+	(1)针对大整数的运算
+	(2)构造方法	
+		A:BigInteger(String s)
+	(3)成员方法(自己补齐)
+		public BigInteger add(BigInteger val):					加
+		public BigInteger subtract(BigInteger val):				减
+		public BigInteger multiply(BigInteger val):				乘
+		public BigInteger divide(BigInteger val):				除
+		public BigInteger[] divideAndRemainder(BigInteger val):	返回商和余数的数组
+
+6:BigDecimal(理解)
+	System.out.println(0.09 +　0.01);//0.0999999999999999999999999999
+	(1)浮点数据(float, double,数据存储和整数不一样)做运算，会丢失精度。所以，针对浮点数据的操作建议采用BigDecimal。(金融相关的项目)
+	(2)构造方法
+		A:BigDecimal(String s)
+	(3)成员方法：
+		public BigDecimal add(BigDecimal augend):				加
+		public BigDecimal subtract(BigDecimal subtrahend):		减
+		public BigDecimal multiply(BigDecimal multiplicand):	乘
+		public BigDecimal divide(BigDecimal divisor):			除
+		public BigDecimal divide(BigDecimal divisor,int scale,int roundingMode):商，几位小数，如何舍取
+
+7:Date/DateFormat(掌握)
+	(1)Date是日期类，可以精确到毫秒。
+		A:构造方法
+			Date():根据当前的默认毫秒值创建日期对象
+			Date(long date)：根据给定的毫秒值创建日期对象
+		B:成员方法
+			public long getTime():获取时间，以毫秒为单位
+			public void setTime(long time):设置时间，毫秒
+		C:日期和毫秒值的相互转换
+		案例：你来到这个世界多少天了?
+	(2)DateFormat针对日期进行格式化和针对字符串进行解析的类，但是是抽象类，所以使用其子类SimpleDateFormat
+		A:SimpleDateFormat(String pattern) 给定模式
+			yyyy-MM-dd HH:mm:ss
+		B:日期和字符串的转换
+			// Date -- String
+				// 创建日期对象
+				Date d = new Date();
+				// 创建格式化对象
+				// SimpleDateFormat sdf = new SimpleDateFormat();
+				// 给定模式
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
+				// public final String format(Date date)
+				String s = sdf.format(d);
+				System.out.println(s);
+			
+			
+			//String -- Date
+				String str = "2008-08-08 12:12:12";
+				//在把一个字符串解析为日期的时候，请注意格式必须和给定的字符串格式匹配
+				SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				Date dd = sdf2.parse(str);
+				System.out.println(dd);
+		C:案例：
+			制作了一个针对日期操作的工具类。
+	
+8:Calendar(掌握)
+	(1)日历类，封装了所有的日历字段值，通过统一的方法根据传入不同的日历字段可以获取值。
+	(2)如何得到一个日历对象呢?
+		Calendar rightNow = Calendar.getInstance();
+		本质返回的是子类对象(多态)
+	(3)成员方法
+		A:public int get(int field):							返回给定日历字段的值。日历类中的每个日历字段都是静态的成员变量，并且是int类型。
+		B:public void add(int field,int amount):				根据日历字段和一个正负数确定是添加还是减去对应日历字段的值
+		C:public final void set(int year,int month,int date):	设置当前日历的年月日
+	field：Calendar.YEAR, Calendar.MONTH(系统默认月份：0-11), Calendar.DATE
+	(4)案例：
+		计算任意一年的2月份有多少天?
+		// 键盘录入任意的年份
+		Scanner sc = new Scanner(System.in);
+		System.out.println("请输入年份：");
+		int year = sc.nextInt();
+
+		// 设置日历对象的年月日
+		Calendar c = Calendar.getInstance();
+		c.set(year, 2, 1); // 其实是这一年的3月1日
+		// 把时间往前推一天，就是2月的最后一天
+		c.add(Calendar.DATE, -1);
+
+		System.out.println(c.get(Calendar.DATE));

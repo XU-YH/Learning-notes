@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="application/javascript">
+        /*
+         1.由于JS是弱类型语言,因此定义变量时只用一个关键字：var
+
+         var x=100;
+         x="abc";
+         x=123.456;
+
+         用var定义一个JS变量以后,就看你所赋的值是什么类型的,该变量就是什么类型的
+
+         2.在JS中如何判断一个变量的数据类型
+         -用JS中的一元运算符   typeof  来判断
+         -typeof运算符的返回值永远是一个字符串，表示JS中的6种数据类型
+
+         3.JS中的数据类型
+         -number: 数值型,没有整型和实型之分
+         NaN  not a number 是number类型的一个特殊值 代表非数字
+
+         -string:字符串
+         在JS中字符串的定界符   可以用""   也可以用''
+
+         -object:对象型
+         在JS的对象型数据中有一个特殊值：null,它表示对象为 空值
+
+         -function:函数型
+         在JS中可以把一个函数 赋值给 一个变量，这就是因为JS是一种弱类型的语言所特有的
+
+         -boolean: 逻辑型  true  和  false
+
+         -undefined(表示  未定义):  该类型只有一个值就是：undefined
+
+         */
+
+        var x=100;
+        x=123.456;
+        //alert(x*"abc");
+        //alert(typeof (x*"abc"));
+
+        //x="abc";
+        x='abc';
+        //alert(x);
+        //alert(typeof x);
+
+        x=new Object();
+        x=null;
+        //alert(x);
+        //alert(typeof x);
+
+        x=function abc(){alert("这是JS中的一个有名字的函数")};
+        //abc();
+        //x();
+        x=function(){alert("这是JS中的一个没有名字的函数(匿名函数)")};
+        //x();
+        //alert(x);
+        //alert(typeof x);
+
+        //x=(1<2);
+        //x=1>2;
+        //alert(x);
+        //alert(typeof x);
+
+        var c = new Array();
+        alert(c);//变量c的值也为：undefined
+        alert(typeof c);//变量c的数据类型为：undefined
+
+        alert(c+5);//NaN  not a Number 非数字
+    </script>
+</head>
+<body>
+
+</body>
+</html>

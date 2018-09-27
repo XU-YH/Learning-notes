@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="application/javascript">
+        /*
+         1.在JS中如何创建数组
+         -静态初始化：数组长度是可变的
+         var arr=[元素1，元素2，元素3…];
+         注意：在JS中数组元素的类型可以不统一。
+
+         -动态初始化：数组长度是可变的
+         JS中的内置支持类Array就表示一个数组，可以通过该类动态的创建数组对象
+         var arr1=new Array("a","b","c","d","e");//数组长度为5
+         var arr2=new Array();//数组长度为0
+         var arr3=new Array(10);//数组长度为10
+
+         2.JS中的数组的长度是可变的(可以自动扩容): 相当于Java中的集合的概念
+
+         3.遍历数组： 通过下标遍历
+         遍历数组方式一: 用for循环 会输出 undefined
+         遍历数组方式二: 用for in 循环 会跳过 undefined
+
+         */
+
+        var arr=[10,12.31,false,"abc"];
+        //alert(arr[0]);
+        //alert(arr[3]);
+
+        var arr1=new Array("a",10,false,null,undefined);
+        //alert(arr1.length);//数组长度为5
+
+        var arr2=new Array();
+        //alert(arr2.length);//数组长度为0
+
+        //数组长度为10 里边的10个值没有被初始化 默认值为undefined
+        var arr3=new Array(10);
+        //alert(arr3.length);//数组长度为10
+
+        //遍历数组方式一: 用for循环 会输出 undefined
+        for(var i=0;i<arr3.length;i++)
+        {
+            //alert(arr3[i]);
+        }
+
+        //遍历数组方式二: 用for in 循环 会跳过 undefined
+        for(var j in arr3)
+        {
+            //alert(arr3[j]);
+        }
+
+        arr3[0]=1;
+        arr3[1]="abc";
+        arr3[2]=true;
+        arr3[3]=null;
+        arr3[4]=NaN;
+        arr3[5]=undefined;//手动给的undefined
+
+        //遍历数组方式一: 用for循环 会输出 undefined
+        for(var i=0;i<arr3.length;i++)
+        {
+            //alert(arr3[i]);
+        }
+
+        //遍历数组方式二: 用for in 循环 会跳过 系统默认给的 undefined
+        for(var j in arr3)
+        {
+            //alert(arr3[j]);
+        }
+
+        //动态初始化：数组长度是可变的
+        //var arr4=new Array();
+
+        //静态初始化：数组长度是可变的
+        var arr4=[1,2];
+        //alert(arr4[0]);//1
+        //alert(arr4[1]);//2
+        //alert(arr4.length);//2
+
+        arr4[0]=100;
+        //alert(arr4[0]);//100
+        //alert(arr4[1]);//2
+        //alert(arr4.length);//2
+
+        arr4[1]="abc";
+        //alert(arr4[0]);//100
+        //alert(arr4[1]);//abc
+        //alert(arr4.length);//2
+
+        arr4[2]=100;
+        //alert(arr4[0]);//100
+        //alert(arr4[1]);//abc
+        //alert(arr4[2]);//100
+        //alert(arr4.length);//3
+
+        //JS中数组的常用方法
+        //JS中数组是一个 栈 的线性结构 汽车开进死胡同
+        //其中栈底这端是封口的 只能在另一端栈顶 插入和删除元素
+        //栈的特点: 先进后出(First In Last Out FILO)  后进先出 (Last In First Out LIFO)
+
+        var arr5=new Array("a","b","c","d","e");
+        for(var i=0;i<arr5.length;i++)
+        {
+            //alert(arr5[i]);
+        }
+
+        //方法一: push()
+        //压栈 或 入栈
+        arr5.push("f");//f入栈
+        for(var i=0;i<arr5.length;i++)
+        {
+            //alert(arr5[i]);
+        }
+
+        arr5.push("h");//h入栈
+        for(var i=0;i<arr5.length;i++)
+        {
+            //alert(arr5[i]);
+        }
+
+        //方法二: pop()
+        //弹栈 或 出栈
+        arr5.pop();//h出栈
+        for(var i=0;i<arr5.length;i++)
+        {
+            //alert(arr5[i]);
+        }
+
+        arr5.pop();//f出栈
+        for(var i=0;i<arr5.length;i++)
+        {
+            //alert(arr5[i]);
+        }
+
+        //方法三: join()
+        //把数组中的元素 用指定的连接符连接起来 形成一个新字符串
+        //打印输出 join()函数的返回值 返回的是一个字符串"a--->b--->c--->d--->e"
+        //alert(arr5.join("--->"));
+
+        //方法四: reverse()
+        //在JS中数组的名字代表 数组中的所有元素
+
+        alert("翻转之前：" + arr5);
+
+        //arr5.reverse();//进行翻转
+        for(var i=0;i<arr5.length/2;i++)
+        {
+            var temp=arr5[i];
+            arr5[i]=arr5[arr5.length-i-1];
+            arr5[arr5.length-i-1]=temp;
+        }
+
+        alert("翻转之后：" + arr5);
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="application/javascript">
+        /*
+         1.顺序:程序从上到下依次执行
+         2.选择:
+         1).单分支: if(条件表达式) {语句块}
+         2).双分支:
+         if(条件表达式){
+         语句块A
+         }else{
+         语句块B
+         }
+         3).多分支:   判断数轴上的 区间
+         if(条件表达式A){
+         语句块A
+         }else if(条件表达式B){
+         语句块 B
+         }else if(条件表达式C){
+         语句块C
+         }else{
+         语句块D
+         }
+         4).switch多分支: 判断数轴上的  点
+         var i;
+         switch(i)
+         {
+         case 1:
+         break;
+         case 2:
+         break;
+         default:
+         }
+         3.循环:
+         while(循环条件)
+         {语句块}
+
+         do{
+         语句块
+         }while(循环条件)
+
+         for(var i=0;i<arr.length;i++){arr[i]}
+
+         break:提前结束 本重循环
+         continue:提前结束 本次循环
+
+         for in(不常用)
+         with(不常用)
+         */
+
+        //JS中动态创建一个数组
+        //var arr=new Array("a",10,true,function(){alert("我现在是一个数组元素")},null,undefined,NaN);
+        var arr=["a",10,true,function(){alert("我现在是一个数组元素")},null,undefined,NaN];
+        for(var i=0;i<arr.length;i++)
+        {
+            //alert(arr[i]);
+        }
+
+        //arr[3]();//相当于 函数变量名 加 ()  表示 调用 匿名函数
+
+        for(var j in arr)
+        {
+            //alert(arr[j]);//JS中，for in 遍历数组 与 for 相同
+        }
+
+        function Person(name,age)
+        {
+            this.name=name;
+            this.age=age;
+
+            this.a1=function(){
+                alert("我是a1方法!");
+            };
+
+            this.a2=function(){
+                alert("我是a2方法!");
+            };
+
+            this.a3=function(){
+                alert("我是a3方法!");
+            };
+        }
+
+        //以下两种写法等价
+        var a=new Person();
+
+        a.name="张三";
+        a.age=20;
+
+        //alert(a.name);
+        //alert(a.age);
+
+        //a.a1();
+        //a.a2();
+        //a.a3();
+
+        with(a)
+        {
+            //alert(name);
+            //alert(age);
+            //a1();
+            //a2();
+            //a3();
+        }
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

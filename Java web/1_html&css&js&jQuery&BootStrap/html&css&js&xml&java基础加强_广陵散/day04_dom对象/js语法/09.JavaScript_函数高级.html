@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="application/javascript">
+        /*
+         1. 关于同名函数的问题?
+         结论：同名函数将会被覆盖!
+         这是因为在JS中，形参的数量可多可少,
+         因此不是根据参数的个数来决定调用哪个函数
+         形参也不分数据类型，因此也不是根据参数的数据类型来决定调用哪个函数
+         因此在JS中不存在函数重载!
+
+         综上,在JS中只能是根据函数的名字来决定调用的是哪个函数
+         既然是根据函数的名字来调用，那么同名函数将会被覆盖!
+
+         2.在JS自定义函数中变量的作用域,分 全局变量 和 局部变量
+         全局变量 和 局部变量同时存在,优先访问局部的
+
+         3.在JS自定义函数中声明变量时,可以不写var,不推荐这种写法
+         此时,该变量就相当于是 全局变量
+
+         4. 匿名函数可以作为一个实参传递给形参变量
+
+         */
+
+        /*
+        function test()//var x=0;
+        {
+            alert("我是一个  无参无返回值  的函数");
+        }
+
+
+        function test(x)//x=1;
+        {
+            alert(x);
+        }
+
+
+        function test(x,y)//x=2;
+        {
+            alert(x);
+            alert(y);
+            alert(x+y);
+        }
+
+
+        function test(x,y,z)//x=3;
+        {
+            alert(x);//100
+            alert(y);//200
+            alert(z);//undefined
+            alert(x+y+z);//NaN
+        }
+
+         //test(100,200);//此处是用 函数名 加 圆括号(实参列表) 来 调用函数
+        */
+
+        /*
+        var x=function test(){alert("我是一个  无参无返回值  的函数");};
+        //alert(x);
+        //alert(typeof x);
+
+        //x();//此处是用 函数变量 加 圆括号(实参列表) 来 调用函数
+
+        x=function test(y){alert(y);};
+        alert(x);
+        alert(typeof x);
+
+        x(100,200);
+        */
+
+        var x=1000;//全局变量
+         function test1()
+         {
+             var x=100;//局部变量
+             alert(x);//100,全局变量 和 局部变量同时存在,优先访问局部的
+         }
+
+        function test2()
+        {
+            alert(x);//1000,访问全局的
+        }
+
+        function test3()
+        {
+            y=200;//在JS自定义函数中声明变量时,可以不写var,此时,该变量就相当于是 全局变量
+            alert(y);
+        }
+
+
+
+        //test1();
+        //test2();
+        //test3();
+        //alert(y);//200
+
+        function test4(x,y)
+        {
+            alert(x+y);
+        }
+
+        //test4(100,200);//300，函数的名字 加 圆括号 表示 函数调用，实参给形参赋值
+
+        //alert(test4);//输出 函数名   打印的就是函数的声明
+        //alert(test4(100,200));//undefined,输出 函数名加圆括号   打印的是调用函数以后的函数返回值
+
+        /*
+        var z=function test4(x,y){
+            alert(x+y);
+        };
+
+        //alert(z);//输出 有函数名的函数变量  打印的就是函数的声明
+        //alert(z(100,200));//undefined,输出 有函数名的函数变量加圆括号   打印的是调用函数以后的函数返回值
+        */
+
+        var z=test4;
+        //alert(z);//输出 有函数名的函数变量  打印的就是函数的声明
+        //alert(z(100,200));//undefined,输出 有函数名的函数变量加圆括号   打印的是调用函数以后的函数返回值
+
+        var v=function(x,y){
+            alert(x);//undefined
+            alert(y);//undefined
+            alert(x+y);//NaN
+        };
+
+        //alert(v);//输出 匿名函数  的声明
+        //alert(v());//undefined,输出 调用 匿名函数 以后的 函数返回值
+
+        //匿名函数可以作为一个实参传递给形参变量，如下所示
+
+        function test5(x,y,f)
+        {
+            f(x,y);
+        }
+
+        test5(100,200,function(a,b){alert(a+b);});//300
+
+        alert(test5(100,200,function(a,b){alert(a+b);}));//300,undefined
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

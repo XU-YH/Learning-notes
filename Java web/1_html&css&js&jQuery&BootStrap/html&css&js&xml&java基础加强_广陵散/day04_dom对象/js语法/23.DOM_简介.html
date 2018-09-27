@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="application/javascript">
+        /*
+         1.什么是DOM?
+         Document Object Model(文档对象模型)
+
+         2.树形结构
+         DOM把整个HTML文档看成一棵树,这棵树有一个 根节点(html),
+         根节点下面有很多子节点(head(title) body(input))
+
+         JS就能通过 DOM 对页面元素(HTML标签) 进行 增 删 改 查 操作
+         HTML文档(HTML标签集合)--->树(节点的集合)--->对应DOM对象
+         DOM的主要作用就是对HTML文档中的页面元素进行操作(赋值和取值)
+         */
+
+        //在DOM中，document对象就代表 整棵树(顶级对象)
+        function set()
+        {
+            var t=document.getElementById("text01");
+            //alert(t);
+            t.value="好好学习，天天敲代码！！！";
+        }
+
+        function get()
+        {
+            var t=document.getElementById("text01");
+            alert(t.value);
+        }
+
+        function changeType()
+        {
+            var t=document.getElementById("text01");
+            t.type="checkbox";
+        }
+    </script>
+</head>
+<body>
+       <input type="text" id="text01"><br>
+       <input type="button" value="set" onclick="set();">
+       <input type="button" value="get" onclick="get();">
+
+       <input type="button" value="changeType" onclick="changeType();">
+</body>
+</html>

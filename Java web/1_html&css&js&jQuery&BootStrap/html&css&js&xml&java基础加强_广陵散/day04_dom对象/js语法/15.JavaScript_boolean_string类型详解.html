@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="application/javascript">
+        /*
+         1.boolean类型的两种转换方式
+         Boolean(其它类型)函数:  把其它类型转换为boolean类型
+         new Boolean(其它类型):  new出来一个对象,调用Boolean类构造函数来创建
+
+         参数是string: 有内容->true  无内容->false
+         参数是number: 非0->true  0->false
+
+         参数是null  ->  false
+         参数是undefined  ->  false
+         参数是NaN  ->  false
+
+         2.string类型的两种转换方式
+         String(其它类型)函数:  把其它类型转换为String类型
+         new String(其它类型):  new出来一个对象,调用String类构造函数来创建
+
+         注意:在JS中,""  或  ''  都表示字符串
+
+         参数是string: 原样输出
+         参数是number: 加  "" 变成字符串
+
+         参数是null        加  "" 转换成字符串
+         参数是undefined   加  "" 转换成字符串
+         参数是NaN         加  "" 转换成字符串
+
+         */
+
+        //一.Boolean(其它类型)函数:  把其它类型转换为boolean类型
+        //1.string -> boolean
+        //var a=Boolean("abc");
+        //alert(a);//true
+        //alert(typeof a);//boolean
+
+        //var b=Boolean("");
+        //alert(b);//false
+        //alert(typeof b);//boolean
+
+        //var c=Boolean(123);
+        //alert(c);//true
+        //alert(typeof c);//boolean
+
+        //var c=Boolean(0);
+        //alert(c);//false
+        //alert(typeof c);//boolean
+
+        //var d=Boolean(null);
+        //alert(d);//false
+        //alert(typeof d);//boolean
+
+        //var e=Boolean(undefined);
+        //alert(e);//false
+        //alert(typeof e);//boolean
+
+        //var f=Boolean(NaN);
+        //alert(f);//false
+        //alert(typeof f);//boolean
+
+        //var g=String("abc");
+        //alert(g);//"abc"
+        //alert(typeof g);//string
+
+        //var i=String(null);
+        //alert(i);//"null"
+        //alert(typeof i);//string
+
+        //二.new Boolean(其它类型):  new出来一个对象,调用Boolean类构造函数来创建
+        //var a=new Boolean("abc");
+        //alert(a);//true
+        //alert(typeof a);//object
+
+        //var b=new Boolean("");
+        //alert(b);//false
+        //alert(typeof b);//object
+
+        //var c=new Boolean(123);
+        //alert(c);//true
+        //alert(typeof c);//object
+
+        //var c=new Boolean(0);
+        //alert(c);//false
+        //alert(typeof c);//object
+
+        //var d=new Boolean(null);
+        //alert(d);//false
+        //alert(typeof d);//object
+
+        //var e=new Boolean(undefined);
+        //alert(e);//false
+        //alert(typeof e);//object
+
+        //var f=new Boolean(NaN);
+        //alert(f);//false
+        //alert(typeof f);//object
+
+        var h=new String("abc");
+        alert(h);//"abc"
+        alert(typeof h);//object
+
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

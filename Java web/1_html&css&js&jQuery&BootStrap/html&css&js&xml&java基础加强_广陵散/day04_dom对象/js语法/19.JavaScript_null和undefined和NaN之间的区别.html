@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="application/javascript">
+        /*
+         1.null: 是一个object类型 代表一个 空对象
+         2.undefined: 是一个 undefined 类型, 只有一个值 就是 undefined,代表 未定义
+         3.NaN: 是一个 number 类型, 代表 非数字  Not a Number
+
+         在JS中，null和undefined在值上相等，但是它俩的类型不同
+         在JS中是通过 isNaN() 来判断是否为一个  非数字
+         */
+
+        //alert(null==undefined);//true
+        //alert(null==NaN);//false
+        //alert(undefined==NaN);//false
+
+        alert(null===undefined);//false
+        alert(null===NaN);//false
+        alert(undefined===NaN);//false
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

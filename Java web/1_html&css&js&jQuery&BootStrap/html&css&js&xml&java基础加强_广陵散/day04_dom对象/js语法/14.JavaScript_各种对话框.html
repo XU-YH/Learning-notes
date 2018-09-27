@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="application/javascript">
+        /*
+           1.警告对话框: alert("提示文本");
+
+           2.确认对话框:confirm("提示文本")
+             点 确定->true, 点 取消->false
+
+           3.输入对话框:prompt("提示文本",[默认值]);
+             点 确定->获得用户输入的值, 点 取消->null
+         */
+
+        //var y=alert("显示提示文本");
+        //alert(y);//undefined
+
+        //var x=confirm("您是否确定此操作?");
+        //alert(x);//点 确定->true, 点 取消->false
+
+        //var z=prompt("请输入金额：");//无默认值
+        //alert(z);//点 确定->获得用户输入的值, 点 取消->null
+
+        //var z=prompt("请输入金额：",500);//有默认值
+        //alert(z);//点 确定->获得用户输入的值, 点 取消->null
+
+        /*
+        var course=80;
+
+        if(course<=100 && course>=90){
+            alert("优秀!");
+        }else if(course>=80){
+            alert("良好!");
+        }else if(course>=70){
+            alert("一般!");
+        }else if(course>=60){
+            alert("及格!");
+        } else{
+            alert("不及格!");
+        }
+        */
+
+         function test()
+         {
+             var price=prompt("请输入您的加价",500);
+             if(price!=null){
+                 //用户点了确定
+                 if(isNaN(price)){
+                     //用户输入的是 非数字
+                     alert("输入的数据不合法！");
+                 }else{
+                     //用户输入的是数字
+                     alert("请您支付："+(1000+Number(price))+"元！");
+                 }
+
+             }else{
+                 //用户点了取消
+                 alert("您放弃了此次加价机会！");
+             }
+         }
+
+
+    </script>
+</head>
+<body>
+      <img src="../img/2.jpg"><br>
+      底价是1000元，请<input type="button" value="加价" onclick="test();">
+</body>
+</html>

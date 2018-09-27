@@ -1,0 +1,156 @@
+IO流：用来进行设备间的数据传输问题
+IO流相对于程序而言，输入流-读取数据；输出流-写出数据
+数据类型：
+			字节流
+			字符流：为了方便操作文本文件数据，Java就提供了字符流
+OutputStrieam; InputStream; Reader; Writer
+ 
+ FileOutputStream(File file)
+ FileOutputStream(String name)
+ //创建字节输出流对象
+ File file = new File("fos.txt")
+ FileOutputStream fos = new FileOutputStream(file)
+ 或者FileOutputStream fos= new FileOutputStream("fos.txt");
+
+ //写数据
+ //getBytes()方法：String类中的方法，将字符串转化成字节数组
+ fos.write("hello,IO".getBytes());
+ 
+ //释放资源
+ //关闭文件输出流并释放与此流有关的所有的系统资源
+ fos.close();
+ /*
+  *为什么一定要colse()呢？
+  *A：让流对象变成垃圾，这样就可以被垃圾回收器回收了
+  *B:通知系统去释放跟该文件相关的资源
+ */
+
+ //创建字节输出流对象
+ FileOutputStream fos= new FileOutputStream("fos2.txt");
+ 
+ //write()方法
+ //写一个字节
+ fos.write(97);
+ //写一个字节数组
+ byte[] bys= {97, 98,99,100,101};
+ fos.write(bys);
+ //写一个字节数组的一部分
+ fos.write(bys,1,3);
+ 
+ //释放资源
+ fos.close();
+ 
+ FileOutputStream fos= new FileOutputStream("fos3.txt");
+ for(int x= 0; x<10; x++){
+	fos.write(("hello"+x).getBytes());
+	//换行
+	fos.write("\r\n".getBytes());
+ }
+ 
+  //数据的追加
+  FileOutputStream fos = FileOutputStream("fos3.txt", true);
+ 
+ //释放资源
+ fos.close();
+ 
+ 
+ /******************************
+  
+  //创建字节输入流对象
+  FileInputStream fis= new FileInputStream("fis.txt");
+  
+  //调用read()方法读取数据，并把数据显示在控制台
+  //一次读取一个字节数组
+  int by = fis.read();
+  System.out.println((char)by);
+  
+  //用循环改进
+  int by= fis.read();
+  while((by= fis.read()) != -1){
+	System.out.print((char)by);
+  }
+  
+  //释放资源
+  fis.close(); 
+ 
+ /**************************************
+ 
+ //封装数据源
+ FileInputStream fis = new FileInputStream("a.txt");
+ 
+ //封装目的地
+ FileOutputStream fos = new FileOutputStream("b.txt");
+ 
+ int by= 0;
+ while((by = fis.read()) != -1){
+	fos.write(by);
+ }
+ 
+ //释放资源
+ fis.close();
+ fos.close();
+ 
+ /**************************************************
+ 
+ 在计算机中中文的存储分两个字节：第一个字节肯定是负数，第二个可能是负数可能是正数。
+ 
+ /*****************************************
+  
+ //单个字节读取太慢，采取read(byte[]);
+ 
+ FileInputStream fis = new FileInputStream("e:\\a.txt");
+ FileOutputStream fos = new FileOutputStream("b.txt");
+ 
+ int len = 0;
+ byte[] bys = new byte[1024];
+ while((len = fis.read(bys))!= -1){
+	fos.write(bys, 0, len);
+ }
+ 
+ fis.close();
+ fos.close();
+ 
+ /************************************
+ 
+ BufferedOutputStream
+ BufferedInputStream
+  
+ BufferedInputStream bis = BufferedInputStream(new FileInputStream("e:\\a.txt"));
+ BufferedOutputStream bos = BufferedOutputStream(new FileOutputStream("b.txt"));
+ 
+ int len = 0;
+ byte[] bys = new byte[1024];
+ while((len = bis.read(bys))!= -1){
+	bos.write(bys, 0, len);
+ }
+ 
+ bis.close();
+ bos.close();
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

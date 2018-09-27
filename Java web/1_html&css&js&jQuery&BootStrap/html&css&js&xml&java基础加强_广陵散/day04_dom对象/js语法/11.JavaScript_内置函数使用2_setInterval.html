@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="application/javascript">
+        /*
+         setInterval: 间隔多少毫秒之后 调用执行 某个函数，该函数第一次执行时会返回一个id
+         clearInterval(id):清除间隔
+         */
+
+        var id;
+        function start()
+        {
+            id=setInterval(function(){alert("每隔3秒执行一次！");},3000);
+        }
+
+        //alert(id);
+
+        function stop()
+        {
+            clearInterval(id);
+        }
+
+    </script>
+
+</head>
+<body>
+     <input type="button" value="start" onclick="start();">
+     <input type="button" value="stop" onclick="stop();">
+</body>
+</html>

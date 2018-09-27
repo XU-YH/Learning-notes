@@ -1,0 +1,147 @@
+1:多线程(理解)
+	(1)JDK5以后的针对线程的锁定操作和释放操作
+		虽然我们可以理解同步代码块和同步方法的锁对象问题，但是我们并没有直接看到在哪里加上了锁，在哪里释放了锁，
+	为了更清晰的表达如何加锁和释放锁,JDK5以后提供了一个新的锁对象Lock。
+		Lock锁
+		Lock：
+			void lock()： 获取锁。
+			共享代码
+			void unlock():释放锁。 
+			ReentrantLock是Lock的实现类。
+				// 定义锁对象
+				private Lock lock = new ReentrantLock();
+				// 加锁
+				lock.lock();
+				共享代码
+				// 释放锁
+				lock.unlock();
+	(2)死锁问题的描述和代码体现
+		两个或两个以上的线程在争夺资源的过程中，发生的一种相互等待的现象。
+	(3)生产者和消费者多线程体现(线程间通信问题)
+		以学生作为资源来实现的
+		
+		资源类：Student
+		设置数据类：SetThread(生产者)
+		获取数据类：GetThread(消费者)
+		测试类：StudentDemo
+		
+		代码：
+			A:最基本的版本，只有一个数据。
+			B:改进版本，给出了不同的数据，并加入了同步机制
+			C:等待唤醒机制改进该程序，让数据能够实现依次的出现
+				wait():等待
+				notify()：唤醒单个线程
+				notifyAll()：唤醒所有线程 (多生产多消费)
+					为什么这些方法不定义在Thread类中呢?
+						这些方法的调用必须通过锁对象调用，而我们刚才使用的锁对象是任意锁对象。
+						所以，这些方法必须定义在Object类中。
+			D:等待唤醒机制的代码优化。把数据及操作都写在了资源类中
+	(4)线程组:ThreadGroup
+		把多个线程组合到一起。
+		它可以对一批线程进行分类管理，Java允许程序直接对线程组进行控制。
+	(5)线程池:
+		// 创建一个线程池对象，控制要创建几个线程对象。
+		// public static ExecutorService newFixedThreadPool(int nThreads)
+		ExecutorService pool = Executors.newFixedThreadPool(2);
+
+		// 可以执行Runnable对象或者Callable对象代表的线程
+		pool.submit(new MyRunnable());
+		pool.submit(new MyRunnable());
+
+		//结束线程池
+		pool.shutdown();
+	(6)多线程实现的第三种方案:
+		A:创建一个线程池对象，控制要创建几个线程对象。
+			public static ExecutorService newFixedThreadPool(int nThreads)
+		B:这种线程池的线程可以执行：
+			可以执行Runnable对象或者Callable对象代表的线程
+			做一个类实现Runnable接口。
+		C:调用如下方法即可
+			Future<?> submit(Runnable task)
+			<T> Future<T> submit(Callable<T> task)
+		D:我就要结束，可以吗?
+			可以。
+		实现Callable接口，依赖于线程池，call返回	
+		//Callable:是带泛型的接口。
+		//这里指定的泛型其实是call()方法的返回值类型。
+		public class MyCallable implements Callable {
+			@Override
+			public Object call() throws Exception {
+				for (int x = 0; x < 100; x++) {
+					System.out.println(Thread.currentThread().getName() + ":" + x);
+				}
+				return null;
+			}
+		}
+		
+		pool.submit(new MyCallable());
+		
+	(7)多线程的面试题
+		匿名内部类的格式：
+			new 类名或者接口名() {
+				重写方法;
+			};
+		本质：是该类或者接口的子类对象。
+			A:	
+				new Thread(){
+					run(){}		
+				}.start();
+			B:
+				new	Thread(new Runnable(){
+					run(){}		
+				}){}.start();
+			C:只会执行Thread类的子类对象内的run()方法。
+				new Thread(new Runnable() {
+					run() {}
+				}) {
+					run() {}
+				}.start();
+	(8)定时器：可以让我们在指定的时间做某件事情，还可以重复的做某件事情。
+		依赖Timer和TimerTask这两个类：
+		Timer:定时
+			public Timer()
+			public void schedule(TimerTask task,long delay)delay毫秒后执行TimerTask任务
+			public void schedule(TimerTask task,long delay,long period)
+			public void cancel()
+		TimerTask:任务
+	
+2:设计模式(理解)
+	(1)面试对象的常见设计原则
+		单一
+		开闭
+		里氏
+		依赖注入
+		接口
+		迪米特
+	(2)设计模式概述和分类
+		A:经验的总结
+		B:三类
+			创建型
+			结构型
+			行为型
+	(3)改进的设计模式
+		A:简单工厂模式
+		B:工厂方法模式
+		C:单例模式(掌握)
+			a:饿汉式
+				private Student(){
+				}
+				private static Student s = new Student();
+				public static Student getStudent(){
+					return s;
+				}
+			b:懒汉式
+				private static Student s = null;
+				public synchronized static Student getStudent(){
+					if(s == null){
+						s = new Student();
+					}
+					return s;
+				}
+	(4)Runtime
+		JDK提供的一个单例模式应用的类。
+		还可以调用dos命令。
+			
+day24
+cn.itcast_02
+cn.itcast_07

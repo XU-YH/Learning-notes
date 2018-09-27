@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="application/javascript">
+        /*
+         1.关于 undefined 类型: 只有一个值 就是 undefined
+         在JS中,函数如果没有返回值,返回的就是 undefined
+         在JS中, 变量如果没有被初始化，其值也是undefined
+
+         2.Number类型的两种转换方式：
+         1).  通过JS内置函数  Number(其它数值类型)
+         把  其它数值类型 创建(转化成）  一个数值类型(number数据类型)
+         如果能转换成数值,就返回一个 数值
+         如果不能转换成数值,返回 NaN
+         此 系统内置函数 Number()函数 与 自定义函数一样, 有返回值
+
+         2).  new Number()：通过 Number类的构造函数来
+         创建(实例化) 一个数值对象(objcet数据类型)
+         此构造函数 new Number() 无返回值
+
+         总结:以上两种 创建数值的方式用那一种都可以,
+         建议用第一种,第二种能看懂就行
+         */
+
+        function abc(x,y)
+        {
+            //alert(x+y);//300,不是返回值
+            //return x+y;//300,是返回值
+        }
+
+
+        //一.用 普通函数Number(其它数值类型) 来 创建(转化成) 一个数值类型(number)
+        //1.string  --->  number
+        var a=Number("abc");
+        //alert(a);//NaN
+        //alert(typeof a);//number
+
+        a=Number("123");
+        //alert(a);//123
+        //alert(typeof a);//number
+
+        a=Number("123.456");
+        //alert(a);//123.456
+        //alert(typeof a);//number
+
+        a=Number("12.12.12");
+        //alert(a);//NaN
+        //alert(typeof a);//number
+
+        a=Number("");
+        //alert(a);//0
+        //alert(typeof a);//number
+
+        //2.boolean  --->  number
+        var b=Number(true);
+        //alert(b);//1
+        //alert(typeof b);//number
+
+        b=Number(false);
+        //alert(b);//0
+        //alert(typeof b);//number
+
+        //3.undefined ---> number
+        var c=Number(undefined);
+        //alert(c);//NaN
+        //alert(typeof c);//number
+
+        //4.null --->  number
+        var d=Number(null);
+        //alert(d);//0
+        //alert(typeof d);//number
+
+       //二.用 构造函数 new Number() 来 创建(实例化)一个 数值对象(object)
+        //1.string  --->  number
+        var e=new Number("abc");
+        //alert(e);//NaN
+        //alert(typeof e);//object
+
+        a=new Number("123");
+        //alert(a);//123
+        //alert(typeof a);//object
+
+        a=new Number("123.456");
+        //alert(a);//123.456
+        //alert(typeof a);//object
+
+        a=new Number("12.12.12");
+        //alert(a);//NaN
+        //alert(typeof a);//object
+
+        a=new Number("");
+        //alert(a);//0
+        //alert(typeof a);//object
+
+        //2.boolean  --->  number
+        var b=new Number(true);
+        //alert(b);//1
+        //alert(typeof b);//object
+
+        b=new Number(false);
+        //alert(b);//0
+        //alert(typeof b);//object
+
+        //3.undefined ---> number
+        var c=new Number(undefined);
+        //alert(c);//NaN
+        //alert(typeof c);//object
+
+        //4.null --->  number
+        var d=new Number(null);
+        //alert(d);//0
+        //alert(typeof d);//object
+
+        /*
+         和number相关的常用函数
+            isNaN(参数)：判断参数是否为NaN ， true  false
+
+            parseInt(参数)：尝试将参数解析为整型
+            parseFloat(参数)：尝试将参数解析为浮点型
+         */
+
+         //alert(isNaN(NaN));//true
+         //alert(isNaN(123));//false
+
+        //isNaN()函数在判断参数是否为 NaN 之前要先调用Number()函数 将参数 转换 为 数值型
+         //alert(isNaN("123"));//false
+
+         //alert(isNaN("123abc"));//true
+
+        //先尝试解析，一直到不能转换为止，与Number()不同
+         var v=parseInt("123abc");
+         //alert(v);//123
+
+         v=parseFloat("12.12.12");
+         //alert(v);//12.12
+
+        v=parseInt("abc123");
+        alert(v);//NaN
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="application/javascript">
+        alert("第1次 自动弹出这个对话框!(JavaScrip_使用方式二_内部式)");
+    </script>
+
+    <script type="application/javascript">
+        function abc()
+        {
+            alert('这是单击按钮，手动弹窗！');
+        }
+    </script>
+</head>
+<body>
+<!--
+         <script>标签中写的内容就是JavaScript语言
+         --注意: 根据<script>标签的位置不同,执行顺序也就不同
+     -->
+
+
+<!--
+<input type="button" value="go" onclick="alert('这是单击按钮，手动弹窗！')">
+-->
+
+    <input type="button" value="go" onclick="abc()">
+
+    <script type="application/javascript">
+        alert("第2次 自动弹出这个对话框!(JavaScrip_使用方式二_内部式)");
+        //根据<script>标签的位置不同,执行顺序也就不同，即先显示按钮，后弹窗
+    </script>
+
+
+</body>
+</html>

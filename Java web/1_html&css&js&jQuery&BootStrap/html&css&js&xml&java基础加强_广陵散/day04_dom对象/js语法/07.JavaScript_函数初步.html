@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="application/javascript">
+        /*
+         1.JS中函数定义的语法格式如下:
+         function 函数名(形式参数列表)
+         {
+         函数体;
+         return  返回值;
+         }
+
+         2.JS中函数的调用:
+         函数名(实际参数列表);
+
+         */
+
+        //1.无参无返回值
+        function test1()
+        {
+            alert("我是一个  无参无返回值  的函数");
+        }
+
+        //test1();
+
+        //2.有参无返回值
+        //JS中的形参不能写 var, 原因有两点如下:
+        //1).JS中的变量只有一个 var 类型
+        //2).JS是一个解释型的语言,如果写了var,
+        //程序执行到var处,就要申请内存空间,会浪费空间
+        //因此在JS中,形参唯一的功能就是表示有几个参数
+
+        function test2(x,y)//注意:JS中形参的声明不用var  !!!
+        {
+            alert(x+y);
+            //alert("我是一个  有参无返回值  的函数");
+        }
+
+        //test2(100,200);//300
+        //test2(100,"abc");//此时函数内的 + 表示 字符串连接 结果 "100abc"
+        //test2(100,200,300,400);//300, 此时后面多传的参数无效,被忽略
+        //test2(100);//NaN,少传参数时，因为形参变量y没有被初始化，其值为undefined
+        //alert(test2(100,200));//此时，函数无返回值，输出undefined
+
+        function test3(x,y)
+        {
+            return x+y;
+        }
+
+        var x=test3(100,200);//300,函数本身有返回值,正常输出返回值
+        //alert(x);
+
+        alert(test3(100,200));
+    </script>
+</head>
+<body>
+
+</body>
+</html>

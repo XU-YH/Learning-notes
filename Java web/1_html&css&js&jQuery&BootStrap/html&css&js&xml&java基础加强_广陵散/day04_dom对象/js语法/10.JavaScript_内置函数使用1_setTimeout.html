@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="application/javascript">
+         /*
+            setTimeout(函数名，毫秒数)： 延迟多少毫秒之后 调用执行 某个函数
+          */
+
+         //1. 使用内置函数setTimeout调用函数方式一: 延迟调用有名字的函数
+        function abc()
+        {
+            alert("我是一个有名字的函数, 延迟3秒之后执行我!");
+        }
+        //setTimeout(abc,3000);
+
+         //2. 使用内置函数setTimeout调用函数方式二: 延迟调用没名字的函数(匿名函数)
+         var f=function(){
+             alert("我是一个没有名字的匿名函数, 延迟3秒之后执行我!");
+         };
+
+         // alert(f);
+         // f();
+         // alert(f());
+
+         // setTimeout(f);//没有延迟，通过setTimeout直接调用函数f
+         setTimeout(f());//没有延迟，通过setTimeout直接调用 函数f()的返回值
+         // setTimeout(undefined);//和上边的语句等价
+
+         // setTimeout(f,3000);//延迟3秒以后，通过setTimeout延迟调用函数f,与下面的语句功能等价
+         //setTimeout(function(){alert("我是一个没有名字的匿名函数, 延迟3秒之后执行我!");},3000);
+
+        /*
+         setTimeout(f(),3000);//没有延迟，通过setTimeout直接调用 函数f()的返回值
+
+         总结: 加()有意思是 函数调用，就是一上来就开始调用,不用延迟3秒，
+         返回一个 undefined，就相当于是 setTimeout(undefined,3000);
+         延迟3秒之后  调用一个  undefined
+         */
+
+         //3.setTimeout函数的 递归调用
+        function test()
+        {
+            alert("aaa");
+            setTimeout(test,3000);
+        }
+
+        //test();
+    </script>
+</head>
+<body>
+      <input type="button" value="go" onclick="test();">
+</body>
+</html>
