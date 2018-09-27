@@ -4,4 +4,4 @@
 
 - 按目录结构分类
 
-- 现包含`javase`、`java web`、`spring`、`springmvc`、`mybatis`、前端`html`、`css`、`javascript`、`jQuery`、`BootStrap`、`maven`
+- 现包含`javase`、`java web`、`spring`、`springmvc`、`mybatis`，前端`html`、`css`、`javascript`、`jQuery`、`BootStrap`和`maven`
