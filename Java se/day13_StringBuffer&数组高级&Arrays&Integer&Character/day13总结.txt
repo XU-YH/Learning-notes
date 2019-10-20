@@ -72,16 +72,20 @@
 			}
 			
 		B:选择排序
-			把0索引的元素，和索引1以后的元素都进行比较，第一次完毕，最小值出现在了0索引。同理，其他的元素就可以排好。
+			把0索引的元素，和索引1以后的元素都进行比较，第一次完毕，找出最小值索引，与0索引交换。同理，其他的元素就可以排好。
 			
 			public static void selectSort(int[] arr) {
 				for(int x=0; x<arr.length-1; x++) {
+					int minIndex = x;
 					for(int y=x+1; y<arr.length; y++) {
-						if(arr[y] < arr[x]) {
-							int temp = arr[x];
-							arr[x] = arr[y];
-							arr[y] = temp;
+						if(arr[minIndex] > arr[y]){
+							minIndex = y;
 						}
+					}
+					if(minIndex != x) {
+						int temp = arr[minIndex];
+						arr[minIndex] = arr[x];
+						arr[x] = temp;
 					}
 				}
 			}

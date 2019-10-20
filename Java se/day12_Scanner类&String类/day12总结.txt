@@ -67,17 +67,18 @@
 					
 			字符串如果是变量相加，先开空间，再拼接
 			字符串如果是常量相加，先加，然后在常量池找，如果有直接返回，否则就创建
+			如果运算时，等号右边有一个“运算数”不为常量（即使该“运算数”是用双引号创建的常量），则得到的结果相当于new创建的一个新的String对象
 	(5)字符串的功能(自己补齐方法中文意思)
 		A:判断功能
-			boolean equals(Object obj)：			比较字符串的内容是否相同，区分大小写
+			boolean equals(Object obj)：				比较字符串的内容是否相同，区分大小写
 			boolean equalsIgnoreCase(String str)：	比较字符串的内容是否相同，忽略大小写
 			boolean contains(String str)：			判断大字符串中是否包含小字符串
-			boolean startsWith(String str)：		判断字符串是否是以某个指定的字符串开头
+			boolean startsWith(String str)：			判断字符串是否是以某个指定的字符串开头
 			boolean endsWith(String str)：			判断字符串是否是以某个指定的字符串结尾
 			boolean isEmpty()：						判断字符串是否为空
 		B:获取功能
 			int length()：							获取字符串的长度
-			char charAt(int index)：				获取指定索引位置的字符
+			char charAt(int index)：					获取指定索引位置的字符
 			int indexOf(int ch)：					返回指定字符在此字符串中第一次出现的索引
 				为什么这里是int类型，而不是char类型？
 				原因是：'a'和97都可以代表'a'

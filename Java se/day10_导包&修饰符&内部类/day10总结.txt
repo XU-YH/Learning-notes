@@ -47,7 +47,7 @@
 	(1)权限修饰符
 					本类	同一个包下	不同包下的子类	不同包下的无关类
 		private		Y
-		默认		Y		Y
+		默认			Y		Y
 		protected	Y		Y			Y
 		public		Y		Y			Y				Y
 	(2)这四种权限修饰符在任意时刻只能出现一种。
