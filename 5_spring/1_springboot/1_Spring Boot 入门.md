@@ -1,4 +1,4 @@
-# **一、**Spring Boot 入门
+# 一、Spring Boot 入门
 
 ## 1、Spring Boot 简介
 
@@ -63,11 +63,11 @@
 
 整合maven进来；
 
-![idea设置](E:/study/springboot/images/搜狗截图20180129151045.png)
+![idea设置](images/搜狗截图20180129151045.png)
 
 
 
-![images/](E:/study/springboot/images/搜狗截图20180129151112.png)
+![images/](images/搜狗截图20180129151112.png)
 
 ## 4、Spring Boot HelloWorld
 
@@ -265,7 +265,7 @@ public @interface EnableAutoConfiguration {
 
 ​		将所有需要导入的组件以全类名的方式返回；这些组件就会被添加到容器中；
 
-​		会给容器中导入非常多的自动配置类（xxxAutoConfiguration）；就是给容器中导入这个场景需要的所有组件，并配置好这些组件；		![自动配置类](E:/study/springboot/images/搜狗截图20180129224104.png)
+​		会给容器中导入非常多的自动配置类（xxxAutoConfiguration）；就是给容器中导入这个场景需要的所有组件，并配置好这些组件；		![自动配置类](images/搜狗截图20180129224104.png)
 
 有了自动配置类，免去了我们手动编写配置注入功能组件等的工作；
 
