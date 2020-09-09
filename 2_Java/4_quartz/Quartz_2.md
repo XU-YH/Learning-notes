@@ -1,6 +1,6 @@
-#Quartz任务调度2
+# Quartz任务调度2
 
-##一.配置、资源SchedulerFactory
+## 一.配置、资源SchedulerFactory
 
 Quartz以模块方式构架，因此，要使它运行，几个组件必须很好的咬合在一起。幸运的是，已经有了一些现存的助手可以完成这些工作。
 
@@ -99,7 +99,7 @@ DirectSchedulerFactory是对SchedulerFactory的直接实现,通过它可以直�
 		DirectSchedulerFactory directSchedulerFactory = DirectSchedulerFactory.getInstance();
 		Scheduler scheduler = directSchedulerFactory.getScheduler();
 
-##二.Quartz.properties
+## 二.Quartz.properties
 
 默认路径：quartz-2.3.0中的org.quartz中的quartz.properties
 ![2](img/11.png)
@@ -176,7 +176,7 @@ org.quartz.threadPool.class
 也可以编写程序代码操作quartz.properties文件的内容：
 
 	public class QuartzProperties {
-
+	
 		public static void main(String[] args) {
 	        // 创建工厂实例
 	        StdSchedulerFactory factory = new StdSchedulerFactory();
@@ -215,14 +215,14 @@ Quartz的监听器用于当任务调度中你所关注事件发生时，能够�
 
 本课程关于全局与非全局的监听器的使用，将一一介绍。
 
-###2.JobListener
+### 2.JobListener
 
 任务调度过程中，与任务Job相关的事件包括：job开始要执行的提示; job执行完成的提示。
 
 
 
     public interface JobListener {
-
+    
       	String getName();
       	void jobToBeExecuted(JobExecutionContext context);
       	void jobExecutionVetoed(JobExecutionContext context);
@@ -329,7 +329,7 @@ HelloSchedulerDemoJobListener.java
           // scheduler.shutdown();
       }
     }
-###3.TriggerListener
+### 3.TriggerListener
 
 任务调度过程中，与触发器Trigger相关的事件包括：触发器触发、触发器未正常触发、触发器完成等。
 
@@ -459,8 +459,7 @@ MyTriggerListener.java
         }
      }
 
-
-###4.SchedulerListener
+### 4.SchedulerListener
 
 SchedulerListener会在Scheduler的生命周期中关键事件发生时被调用。与Scheduler有关的事件包括：增加一个job/trigger，删除一个job/trigger，scheduler发生严重错误，关闭scheduler等。
 

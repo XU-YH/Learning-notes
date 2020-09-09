@@ -1,6 +1,6 @@
-#Quartz任务调度
+# Quartz任务调度
 
-##一.Quartz概念
+## 一.Quartz概念
 Quartz是OpenSymphony开源组织在Job scheduling领域又一个开源项目，它可以与J2EE与J2SE应用程序相结合也可以单独使用。
 
 quartz是开源且具有丰富特性的"任务调度库"，能够集成于任何的java应用，小到独立的应用，大至电子商业系统。quartz能够创建亦简单亦复杂的调度，以执行上十、上百，甚至上万的任务。任务job被定义为标准的java组件，能够执行任何你想要实现的功能。quartz调度框架包含许多企业级的特性，如JTA事务、集群的支持。
@@ -11,7 +11,9 @@ quartz是开源且具有丰富特性的"任务调度库"，能够集成于任何
 
 官网：
 http://www.quartz-scheduler.org/ 
-##二.Quartz运行环境
+
+## 二.Quartz运行环境
+
 - Quartz 可以运行嵌入在另一个独立式应用程序
 - Quartz 可以在应用程序服务器(或servlet容器)内被实例化，并且参与事务
 - Quartz 可以作为一个独立的程序运行(其自己的Java虚拟机内)，可以通过RMI使用
@@ -128,7 +130,7 @@ Scheduler为任务的调度器，它会将任务job及触发器Trigger整合起�
     
     log4j.rootLogger=info, stdout
 
-###3.入门案例
+### 3.入门案例
 
 （1）创建HelloJob任务类
 
@@ -155,7 +157,7 @@ HelloJob.java
 HelloSchedulerDemo.java
 
     public class HelloSchedulerDemo {
-
+    
     	public static void main(String[] args) throws Exception {
     		// 1：从工厂中获取任务调度的实例
             Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
@@ -187,7 +189,7 @@ HelloSchedulerDemo.java
 
 ![2](img/5.png)
 
-###4.Job和JobDetail介绍
+### 4.Job和JobDetail介绍
 
 - Job：工作任务调度的接口，任务类需要实现该接口。该接口中定义execute方法，类似JDK提供的TimeTask类的run方法。在里面编写任务执行的业务逻辑。
 - Job实例在Quartz中的生命周期：每次调度器执行Job时，它在调用execute方法前会创建一个新的Job实例，当调用完成后，关联的Job对象实例会被释放，释放的实例会被垃圾回收机制回收。
@@ -202,7 +204,7 @@ HelloSchedulerDemo.java
         System.out.println("group:"+job.getKey().getGroup());
         System.out.println("jobClass:"+job.getJobClass().getName());
 
-###5.JobExecutionContext介绍
+### 5.JobExecutionContext介绍
 
 - 当Scheduler调用一个Job，就会将JobExecutionContext传递给Job的execute()方法；
 - Job能通过JobExecutionContext对象访问到Quartz运行时候的环境以及Job本身的明细数据。
@@ -264,7 +266,7 @@ HelloJob.java
 
 这里注意：如果遇到同名的key，Trigger中的.usingJobData("message", "simple触发器")会覆盖JobDetail中的.usingJobData("message", "打印日志")。
 
-###7.有状态的Job和无状态的Job
+### 7.有状态的Job和无状态的Job
 
 @PersistJobDataAfterExecution注解的使用
 
@@ -298,7 +300,7 @@ HelloJob类添加@PersistJobDataAfterExecution注解，多次Job调用期间可�
 
 
 
-###8.Trigger介绍
+### 8.Trigger介绍
 
 
 ![2](img/6.png)
@@ -344,7 +346,7 @@ HelloJobTrigger.java
 HelloSchedulerDemoTrigger.java
 
 	public class HelloSchedulerDemoTrigger {
-
+	
 		public static void main(String[] args) throws Exception {
 			// 1：从工厂中获取任务调度的实例
 	        Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
@@ -384,7 +386,7 @@ HelloSchedulerDemoTrigger.java
 		}
 	}
 
-###9.SimpleTrigger触发器
+### 9.SimpleTrigger触发器
 
 SimpleTrigger对于设置和使用是最为简单的一种 QuartzTrigger。
 
@@ -413,7 +415,7 @@ HelloJobSimpleTrigger.java
 HelloSchedulerDemoSimpleTrigger.java
 
 	public class HelloSchedulerDemoSimpleTrigger {
-
+	
 		public static void main(String[] args) throws Exception {
 			// 1：从工厂中获取任务调度的实例
 	        Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
@@ -487,7 +489,7 @@ HelloSchedulerDemoSimpleTrigger.java
 - 重复的时间间隔属性值必须为大于0或长整型的正整数，以毫秒作为时间单位，当重复的时间间隔为0时，意味着与Trigger同时触发执行。
 - 如果有指定结束时间属性值，则结束时间属性优先于重复次数属性，这样的好处在于：当我们需要创建一个每间隔10秒钟触发一次直到指定的结束时间的 Trigger，而无需去计算从开始到结束的所重复的次数，我们只需简单的指定结束时间和使用REPEAT_INDEFINITELY作为重复次数的属性 值即可。
 
-###10.CronTrigger触发器
+### 10.CronTrigger触发器
 
 如果你需要像日历那样按日程来触发任务，而不是像SimpleTrigger 那样每隔特定的间隔时间触发，CronTriggers通常比SimpleTrigger更有用,因为它是基于日历的作业调度器。
 
@@ -560,7 +562,7 @@ HelloJobCronTrigger.java
 HelloSchedulerDemoCronTrigger.java
 
 	public class HelloSchedulerDemoCronTrigger {
-
+	
 		public static void main(String[] args) throws Exception {
 			// 1：从工厂中获取任务调度的实例
 	        Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
